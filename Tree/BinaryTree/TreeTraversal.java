@@ -1,8 +1,8 @@
-package BinaryTree;
+package Tree.BinaryTree;
 
 import java.util.*;
 
-public class InorderStack{
+public class TreeTraversal{
 
     //Node class to make Tree structure
     static class Node{
@@ -25,21 +25,30 @@ public class InorderStack{
     static void inorder(Node root){
        if (root == null)
        return;
+       
+       inorder(root.left);
+       System.out.print(root.key + " ");
+       inorder(root.right);
+    }
 
-       Stack<Node> stack = new Stack<>();
-        Node current = root;
-       while(!stack.isEmpty() || current != null){
-        
-        while(current != null){
-            stack.push(current);
-            current = current.left;
-        }
+    //PreOrder Traversal of tree
+    static void preorder(Node root){
+        if(root == null)
+        return;
 
-        current = stack.pop();
-        System.out.print(current.key + " ");
-        current = current.right;
+        System.out.print(root.key + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
 
-       }
+    //PostOrder Traversal of Tree
+    static void postorder(Node root){
+        if(root == null)
+        return;
+
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.key + " ");
     }
 
     public static void main(String args[]){
@@ -53,13 +62,13 @@ public class InorderStack{
         System.out.println("InOrder");
         inorder(root);
 
-        // //PreOrder
-        // System.out.println("PreOrder");
-        // preorder(root);
+        //PreOrder
+        System.out.println("PreOrder");
+        preorder(root);
 
-        // //PostOrder
-        // System.out.println("PostOrder");
-        // postorder(root);
+        //PostOrder
+        System.out.println("PostOrder");
+        postorder(root);
 
     }
 
