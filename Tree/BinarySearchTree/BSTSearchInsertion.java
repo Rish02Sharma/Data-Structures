@@ -1,4 +1,4 @@
-package BinarySearchTree;
+package Tree.BinarySearchTree;
 
 import java.util.*;
 
